@@ -221,3 +221,8 @@
 	
 7) 
 	Deploy jackrabbit-jca-2.16.2.rar (copy it into jboss.home.dir/standalone/deployments)
+
+8)
+	Add 			
+		<module name="deployment.jackrabbit-jca-2.16.2.rar"/>  
+	into jboss-deployment-structure.xml
