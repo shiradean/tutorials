@@ -1,24 +1,26 @@
 #Configuration
 
-*	Download JCR (https://download.oracle.com/otndocs/jcp/content_repository-2.0-fr-oth-JSpec/) extract jcr-2.0.jar
+*	
+	Download JCR (https://download.oracle.com/otndocs/jcp/content_repository-2.0-fr-oth-JSpec/) extract jcr-2.0.jar
 	Add module to wildfly : 
-    module.xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <module xmlns="urn:jboss:module:1.5" name="javax.jcr">
-    	<dependencies>
-    		<module name="javax.transaction.api" export="true"/>
-    	</dependencies>
-    	<resources>
-    		<resource-root path="jcr-2.0.jar"/>
-    	</resources>
-    </module>
+		
+		module.xml
+		<?xml version="1.0" encoding="UTF-8"?>
+		<module xmlns="urn:jboss:module:1.5" name="javax.jcr">
+			<dependencies>
+				<module name="javax.transaction.api" export="true"/>
+			</dependencies>
+			<resources>
+				<resource-root path="jcr-2.0.jar"/>
+			</resources>
+		</module>
 
 *
 	Create user and DB in Posgresql.
 	
-    create database jackrabbit;
-    create role jackrabbit with login password 'rfybcnhf';
-    grant all privileges on schema public to jackrabbit;
+		create database jackrabbit;
+		create role jackrabbit with login password 'rfybcnhf';
+		grant all privileges on schema public to jackrabbit;
 	
 	Name = jackrabbi, login = jackrabbi, password = jackrabbi
 
@@ -182,37 +184,37 @@
 * 
 	Standalone.xml 
 	Configurate resource adapter : 
-		into (inline) xmlns="urn:jboss:domain:resource-adapters:5.0" 
+		into xmlns="urn:jboss:domain:resource-adapters:5.0" 
 		add next code
-    <resource-adapters>
-    	<resource-adapter id="jackrabbit-jca-2.16.2.rar">
-    		<archive>
-    			jackrabbit-jca-2.16.2.rar
-    		</archive>
-    		<connection-definitions>
-    			<connection-definition class-name="org.apache.jackrabbit.jca.JCAManagedConnectionFactory" jndi-name="jcr/local" enabled="true" pool-name="RabbitAdapter">
-    				<config-property name="homeDir">
-    					${jboss.home.dir}/standalone/data/jackrabbit
-    				</config-property>
-    				<config-property name="configFile">
-    					${jboss.home.dir}/standalone/data/jackrabbit/repository.xml
-    				</config-property>
-    				<security>
-    					<application/>
-    				</security>
-    				<validation>
-    					<background-validation>false</background-validation>
-    				</validation>
-    			</connection-definition>
-    		</connection-definitions>
-    	</resource-adapter>
-    </resource-adapters>
+			<resource-adapters>
+				<resource-adapter id="jackrabbit-jca-2.16.2.rar">
+					<archive>
+						jackrabbit-jca-2.16.2.rar
+					</archive>
+					<connection-definitions>
+						<connection-definition class-name="org.apache.jackrabbit.jca.JCAManagedConnectionFactory" jndi-name="jcr/local" enabled="true" pool-name="RabbitAdapter">
+							<config-property name="homeDir">
+								${jboss.home.dir}/standalone/data/jackrabbit
+							</config-property>
+							<config-property name="configFile">
+								${jboss.home.dir}/standalone/data/jackrabbit/repository.xml
+							</config-property>
+							<security>
+								<application/>
+							</security>
+							<validation>
+								<background-validation>false</background-validation>
+							</validation>
+						</connection-definition>
+					</connection-definitions>
+				</resource-adapter>
+			</resource-adapters>
 *
 	Standalone.xml 
 	Turn off archive validation
-    <subsystem xmlns="urn:jboss:domain:jca:5.0">
-        <archive-validation enabled="false" fail-on-error="true" fail-on-warn="false"/>
-    </subsystem>
+		<subsystem xmlns="urn:jboss:domain:jca:5.0">
+			<archive-validation enabled="false" fail-on-error="true" fail-on-warn="false"/>
+		</subsystem>
 *
 	Download jackrabbit-jca-2.16.2.rar (https://jackrabbit.apache.org/jcr/downloads.html)
 	Open  jackrabbit-jca-2.16.2/META-INF/MANIFEST.MF and add 
@@ -221,5 +223,5 @@
 	Deploy jackrabbit-jca-2.16.2.rar (copy it into jboss.home.dir/standalone/deployments)
 *
 	Add 			
-    <module name="deployment.jackrabbit-jca-2.16.2.rar"/>  
+		<module name="deployment.jackrabbit-jca-2.16.2.rar"/>  
 	into jboss-deployment-structure.xml
