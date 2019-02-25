@@ -183,6 +183,7 @@
 
 * 
 	Configurate resource adapter : 
+	
 		Standalone.xml 
 		into xmlns="urn:jboss:domain:resource-adapters:5.0" 
 		add next code
@@ -211,6 +212,7 @@
 			</resource-adapters>
 *
 	Turn off archive validation
+	
 		Standalone.xml 
 		<subsystem xmlns="urn:jboss:domain:jca:5.0">
 			<archive-validation enabled="false" fail-on-error="true" fail-on-warn="false"/>
@@ -222,5 +224,6 @@
 * 
 	Deploy jackrabbit-jca-2.16.2.rar (copy it into jboss.home.dir/standalone/deployments)
 *
-	Add	into jboss-deployment-structure.xml 			
+	Add	into jboss-deployment-structure.xml 	
+	
 		<module name="deployment.jackrabbit-jca-2.16.2.rar"/>  
