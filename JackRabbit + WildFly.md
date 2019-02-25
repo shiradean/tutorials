@@ -19,10 +19,10 @@
 	Create user and DB in Posgresql.
 	
 		create database jackrabbit;
-		create role jackrabbit with login password 'rfybcnhf';
+		create role jackrabbit with login password 'jackrabbit';
 		grant all privileges on schema public to jackrabbit;
 	
-	Name = jackrabbi, login = jackrabbi, password = jackrabbi
+	Name = jackrabbit, login = jackrabbit, password = jackrabbit
 
 *
 	Create folder jackrabbi in jboss.home.dir/standalone/data and place repository.xml in it.
