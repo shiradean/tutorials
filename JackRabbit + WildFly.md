@@ -1,4 +1,5 @@
-1)	
+#Configuration
+*	
 	Download JCR (https://download.oracle.com/otndocs/jcp/content_repository-2.0-fr-oth-JSpec/) extract jcr-2.0.jar
 	Add module to wildfly : 
 	module.xml
@@ -12,7 +13,7 @@
 		</resources>
 	</module>
 
-2)
+*
 	Create user and DB in Posgresql.
 	
 	create database jackrabbit;
@@ -21,7 +22,7 @@
 	
 	Name = jackrabbi, login = jackrabbi, password = jackrabbi
 
-3)
+*
 	Create folder jackrabbi in jboss.home.dir/standalone/data and place repository.xml in it.
 
 		repository.xml
@@ -178,7 +179,7 @@
 			</SearchIndex>
 		</Repository>
 
-4) 
+* 
 	Standalone.xml 
 	Configurate resource adapter : into xmlns="urn:jboss:domain:resource-adapters:5.0" add next code
 		<resource-adapters>
@@ -204,8 +205,7 @@
 				</connection-definitions>
 			</resource-adapter>
 		</resource-adapters>
-
-5)
+*
 	Standalone.xml 
 	Turn off archive validation 
         <subsystem xmlns="urn:jboss:domain:jca:5.0">
@@ -213,16 +213,13 @@
   
             ...
         </subsystem>
-
-6)
+*
 	Download jackrabbit-jca-2.16.2.rar (https://jackrabbit.apache.org/jcr/downloads.html)
 	Open  jackrabbit-jca-2.16.2/META-INF/MANIFEST.MF and add 
 	Dependencies: javax.jcr export,org.slf4j,org.postgresql
-	
-7) 
+* 
 	Deploy jackrabbit-jca-2.16.2.rar (copy it into jboss.home.dir/standalone/deployments)
-
-8)
+*
 	Add 			
 		<module name="deployment.jackrabbit-jca-2.16.2.rar"/>  
 	into jboss-deployment-structure.xml
