@@ -227,3 +227,6 @@
 	Add	into jboss-deployment-structure.xml 	
 	
 		<module name="deployment.jackrabbit-jca-2.16.2.rar"/>  
+		<!--> needed for jbossws-cxf-client compatibility <--!>
+		<module name="org.apache.cxf" />
+        <module name="org.apache.cxf.impl" />
